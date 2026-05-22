@@ -3,7 +3,6 @@
 Lightweight full-stack expense tracker built with MongoDB, Express, React, and Node.
 Includes JWT authentication, expense CRUD, and simple analytics.
 
---
 
 ## Project layout
 
