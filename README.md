@@ -1,128 +1,95 @@
-# ðŸ’¸ ExpenseTrack â€” MERN Stack Expense Tracker
+## ExpenseTrack — MERN Stack Expense Tracker
 
-A full-stack expense tracker built with **MongoDB, Express.js, React.js, and Node.js** featuring JWT authentication, full CRUD, and rich analytics with charts.
+Lightweight full-stack expense tracker built with MongoDB, Express, React, and Node.
+Includes JWT authentication, expense CRUD, and simple analytics.
 
----
+--
 
-## ðŸ—‚ Project Structure
+## Project layout
 
-```
-expenses-tracker/
-â”œâ”€â”€ server/               # Node.js + Express backend
-â”‚   â”œâ”€â”€ config/db.js      # MongoDB connection
-â”‚   â”œâ”€â”€ controllers/      # Business logic
-â”‚   â”œâ”€â”€ middleware/        # JWT auth + validation
-â”‚   â”œâ”€â”€ models/           # Mongoose schemas (User, Expense)
-â”‚   â”œâ”€â”€ routes/           # API route definitions
-â”‚   â”œâ”€â”€ .env              # Environment variables
-â”‚   â””â”€â”€ index.js          # Server entry point
-â”‚
-â””â”€â”€ client/               # React + Vite frontend
-    â””â”€â”€ src/
-        â”œâ”€â”€ api/           # Axios instance with JWT interceptors
-        â”œâ”€â”€ components/    # Navbar, PrivateRoute, ExpenseModal
-        â”œâ”€â”€ context/       # AuthContext (global auth state)
-        â”œâ”€â”€ pages/         # Login, Register, Dashboard, Expenses, Analytics
-        â””â”€â”€ utils/         # Categories, colors constants
-```
+Top-level folders:
 
----
+- `server/` — Node.js + Express backend (API, controllers, models)
+- `client/` — React (Vite) frontend
 
-## âš™ï¸ Prerequisites
+See the repository tree for full structure.
 
-- **Node.js** v18+
-- **MongoDB** â€” running locally on `mongodb://localhost:27017` OR a [MongoDB Atlas](https://cloud.mongodb.com) URI
+--
 
----
+## Prerequisites
 
-## ðŸš€ Installation & Setup
+- Node.js 18 or newer
+- npm (comes with Node.js)
+- MongoDB running locally or a MongoDB Atlas URI
 
-### 1. Clone & enter the project
+--
+
+## Quickstart
+
+1. Clone the repo and install dependencies:
 
 ```bash
 git clone <repo-url>
-cd expenses-tracker
-```
+cd expenses_tracker
 
-### 2. Setup the Backend
-
-```bash
+# backend
 cd server
+npm install
+
+# frontend (in a new terminal)
+cd ../client
 npm install
 ```
 
-Edit `server/.env` with your settings:
+2. Create a `.env` file for the server (copy `.env.example` if present) and set values:
 
-```env
+```
 PORT=5000
 MONGO_URI=mongodb://localhost:27017/expenses-tracker
-JWT_SECRET=replace_with_a_strong_secret_key
+JWT_SECRET=your_secret_here
 NODE_ENV=development
 ```
 
-Start the server:
+3. Run the backend and frontend during development:
 
 ```bash
-npm run dev      # development (nodemon)
-# or
-npm start        # production
-```
+# in server/
+npm run dev
 
-Server runs at: **http://localhost:5000**
-
-### 3. Setup the Frontend
-
-```bash
-cd ../client
-npm install
+# in client/
 npm run dev
 ```
 
-Frontend runs at: **http://localhost:5173**
+Default local URLs:
 
----
+- Backend: http://localhost:5000
+- Frontend: http://localhost:5173
 
-## ðŸ”Œ API Endpoints
+--
 
-### Auth
-| Method | Endpoint              | Description       | Auth |
-|--------|-----------------------|-------------------|------|
-| POST   | `/api/auth/register`  | Register user     | âŒ   |
-| POST   | `/api/auth/login`     | Login & get token | âŒ   |
-| GET    | `/api/auth/me`        | Get current user  | âœ…   |
+## API (overview)
 
-### Expenses
-| Method | Endpoint                   | Description              | Auth |
-|--------|----------------------------|--------------------------|------|
-| GET    | `/api/expenses`            | Get all expenses (+ filter/sort) | âœ… |
-| POST   | `/api/expenses`            | Create expense            | âœ…   |
-| PUT    | `/api/expenses/:id`        | Update expense            | âœ…   |
-| DELETE | `/api/expenses/:id`        | Delete expense            | âœ…   |
-| GET    | `/api/expenses/analytics`  | Get analytics summary     | âœ…   |
+Auth endpoints:
 
----
+- `POST /api/auth/register` — register a new user
+- `POST /api/auth/login` — login and receive JWT
+- `GET  /api/auth/me` — get current user (requires auth)
 
-## âœ¨ Features
+Expense endpoints (all require auth):
 
-- ðŸ” JWT authentication (register / login / protected routes)
-- ðŸ”’ bcrypt password hashing
-- ðŸ“‹ Full CRUD for expenses (title, amount, category, date, note)
-- ðŸ” Search, filter by category, sort by date or amount
-- ðŸ“Š **Dashboard** â€” summary cards + pie chart + recent expenses
-- ðŸ“ˆ **Analytics** â€” pie chart, bar chart, line chart trend, top-5 categories
-- ðŸŽ¨ Dark mode UI with glassmorphism and smooth animations
-- ðŸ“± Fully responsive (mobile-friendly)
+- `GET    /api/expenses` — list expenses (supports filters)
+- `POST   /api/expenses` — create an expense
+- `PUT    /api/expenses/:id` — update an expense
+- `DELETE /api/expenses/:id` — delete an expense
+- `GET    /api/expenses/analytics` — analytics summary
 
----
 
-## ðŸ›  Tech Stack
 
-| Layer      | Technology                              |
-|------------|-----------------------------------------|
-| Frontend   | React 18, Vite, React Router, Recharts  |
-| Styling    | Vanilla CSS (dark mode, responsive)     |
-| HTTP       | Axios (with JWT interceptors)           |
-| Backend    | Node.js, Express.js                     |
-| Auth       | JWT + bcryptjs                          |
-| Validation | express-validator                       |
-| Database   | MongoDB + Mongoose                      |
+
+
+## Tech stack
+
+- Frontend: React, Vite
+- Backend: Node.js, Express
+- Database: MongoDB + Mongoose
+- Auth: JWT + bcrypt
