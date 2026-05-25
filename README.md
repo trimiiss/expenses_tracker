@@ -11,9 +11,7 @@ Top-level folders:
 - `server/` — Node.js + Express backend (API, controllers, models)
 - `client/` — React (Vite) frontend
 
-See the repository tree for full structure.
 
---
 
 ## Prerequisites
 
@@ -21,7 +19,6 @@ See the repository tree for full structure.
 - npm (comes with Node.js)
 - MongoDB running locally or a MongoDB Atlas URI
 
---
 
 ## Quickstart
 
@@ -81,9 +78,6 @@ Expense endpoints (all require auth):
 - `PUT    /api/expenses/:id` — update an expense
 - `DELETE /api/expenses/:id` — delete an expense
 - `GET    /api/expenses/analytics` — analytics summary
-
-
-
 
 
 ## Tech stack
